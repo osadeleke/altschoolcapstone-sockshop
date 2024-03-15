@@ -56,10 +56,6 @@ resource "kubernetes_deployment" "kube-carts-deployment" {
         read_only_root_filesystem = true
         run_as_non_root = true
         run_as_user = 10001
-        #privileged = false
-        #readOnlyRootFilesystem = true
-       # runAsNonRoot = true
-        #runAsUser = 10001
       }
 
       volume_mount {
@@ -89,10 +85,6 @@ resource "kubernetes_service" "kube-carts-service" {
   metadata {
     name      = "carts"
     namespace = kubernetes_namespace.kube-namespace.id
-  /*   annotations = {
-        prometheus.io/scrape: "true"
-    } */
-
     labels = {
         name = "carts"
     }
@@ -151,7 +143,6 @@ resource "kubernetes_deployment" "kube-carts-db-deployment" {
           add = ["CHOWN", "SETGID", "SETUID"]
         }
 
-        #readOnlyRootFilesystem = false
         read_only_root_filesystem = true
             
         }

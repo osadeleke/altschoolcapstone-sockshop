@@ -50,9 +50,6 @@ resource "kubernetes_deployment" "kube-payment-deployment" {
         read_only_root_filesystem = true
         run_as_non_root = true
         run_as_user = 10001
-       # readOnlyRootFilesystem = true
-       # runAsNonRoot = true
-       # runAsUser = 10001
       }
 
 
@@ -93,9 +90,6 @@ resource "kubernetes_service" "kube-payment-service" {
   metadata {
     name      = "payment"
     namespace = kubernetes_namespace.kube-namespace.id
-  /*   annotations = {
-        prometheus.io/scrape: "true"
-    } */
 
     labels = {
         name = "payment"

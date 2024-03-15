@@ -21,9 +21,6 @@ resource "kubernetes_deployment" "kube-rabbitmq-deployment" {
         labels = {
           name = "rabbitmq"
         }
-       /*  annotations = {
-          "prometheus.io/scrape" = "false"
-        } */
       }
       spec {
         container {
@@ -45,7 +42,6 @@ resource "kubernetes_deployment" "kube-rabbitmq-deployment" {
           drop = ["ALL"]
           add = ["CHOWN", "SETGID", "SETUID"]
         }
-        #readOnlyRootFilesystem = false
         read_only_root_filesystem = false
       }
 
@@ -78,10 +74,6 @@ resource "kubernetes_service" "kube-rabbitmq-service" {
   metadata {
     name      = "rabbitmq"
     namespace = kubernetes_namespace.kube-namespace.id
-/*     annotations = {
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "9090"
-    } */
     labels = {
         name = "rabbitmq"
     }

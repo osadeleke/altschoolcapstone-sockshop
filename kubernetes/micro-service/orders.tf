@@ -53,11 +53,8 @@ resource "kubernetes_deployment" "kube-orders-deployment" {
           add = ["NET_BIND_SERVICE"]
         }
         read_only_root_filesystem = true
-        #readOnlyRootFilesystem = true
         run_as_non_root = true
-       # runAsNonRoot = true
-       run_as_user = 10001
-        #runAsUser = 10001
+        run_as_user = 10001
       }
 
       volume_mount {
@@ -89,9 +86,6 @@ resource "kubernetes_service" "kube-orders-service" {
   metadata {
     name      = "orders"
     namespace = kubernetes_namespace.kube-namespace.id
-    /* annotations = {
-        prometheus.io/scrape: "true"
-    } */
 
     labels = {
         name = "orders"
@@ -150,7 +144,6 @@ resource "kubernetes_deployment" "kube-orders-db-deployment" {
           drop = ["ALL"]
           add = ["CHOWN", "SETGID", "SETUID"]
         }
-       # readOnlyRootFilesystem = false
         read_only_root_filesystem = false
             
         }

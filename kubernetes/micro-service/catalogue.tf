@@ -52,9 +52,6 @@ resource "kubernetes_deployment" "kube-catalogue-deployment" {
                 read_only_root_filesystem = true
                 run_as_non_root = true
                 run_as_user = 10001
-                #readOnlyRootFilesystem = true
-                #runAsNonRoot = true
-                #runAsUser = 10001
             }
 
             liveness_probe {
@@ -92,9 +89,6 @@ resource "kubernetes_service" "kube-catalogue-service" {
   metadata {
     name      = "catalogue"
     namespace = kubernetes_namespace.kube-namespace.id
-   /*  annotations = {
-        prometheus.io/scrape: "true"
-    } */
 
     labels = {
         name = "catalogue"

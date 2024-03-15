@@ -21,9 +21,6 @@ resource "kubernetes_deployment" "kube-session-db-deployment" {
         labels = {
           name = "session-db"
         }
-       /*  annotations = {
-          prometheus.io.scrape = "false"
-        } */
       }
       spec {
         container {
@@ -40,7 +37,6 @@ resource "kubernetes_deployment" "kube-session-db-deployment" {
           drop = ["ALL"]
           add = ["CHOWN", "SETGID", "SETUID"]
         }
-        #readOnlyRootFilesystem = false
         read_only_root_filesystem = false
       }
      

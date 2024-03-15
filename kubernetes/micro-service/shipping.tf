@@ -60,9 +60,6 @@ resource "kubernetes_deployment" "kube-shipping-deployment" {
         read_only_root_filesystem = true
         run_as_non_root = true
         run_as_user = 10001
-        /* readOnlyRootFilesystem = true
-        runAsNonRoot = true
-        runAsUser = 10001 */
       }
 
       volume_mount {
@@ -94,11 +91,6 @@ resource "kubernetes_service" "kube-shipping-service" {
   metadata {
     name      = "shipping"
     namespace = kubernetes_namespace.kube-namespace.id
-    #annotations = {
-    #    prometheus.io/scrape: "true"
-    #    prometheus.io/port: "8080"
-    #    prometheus.io/path: "/actuator/prometheus"
-    #}
 
     labels = {
         name = "shipping"

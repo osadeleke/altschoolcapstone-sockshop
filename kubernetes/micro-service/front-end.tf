@@ -54,9 +54,6 @@ resource "kubernetes_deployment" "kube-front-end-deployment" {
         read_only_root_filesystem = true
         run_as_non_root = true
         run_as_user = 10001
-        #readOnlyRootFilesystem = true
-        #runAsNonRoot = true
-        #runAsUser = 10001
       }
 
       liveness_probe {
@@ -94,23 +91,17 @@ resource "kubernetes_service" "kube-front-end-service" {
   metadata {
     name      = "front-end"
     namespace = kubernetes_namespace.kube-namespace.id
-  /*   annotations = {
-        prometheus.io/scrape: "true"
-    } */
-
     labels = {
         name = "front-end"
     }
   }
   spec {
-    #type = "LoadBalancer"
     selector = {
       name = "front-end"
     }
     port {
       port        = 80
       target_port = 8079
-     # node_port   = 30001
     }
   }
 }

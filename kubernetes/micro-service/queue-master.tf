@@ -65,9 +65,6 @@ resource "kubernetes_service" "kube-queue-master-service" {
   metadata {
     name      = "queue-master"
     namespace = kubernetes_namespace.kube-namespace.id
-  /*   annotations = {
-        prometheus.io/scrape: "true"
-    } */
 
     labels = {
         name = "queue-master"

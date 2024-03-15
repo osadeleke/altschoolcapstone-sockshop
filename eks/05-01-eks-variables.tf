@@ -27,6 +27,3 @@ variable "cluster_endpoint_public_access_cidrs" {
   description = "List of CIDR blocks which can access the Amazon EKS public API server endpoint."
   type        = list(string)
 }
-
-# EKS Node Group Variables
-## Placeholder space you can create if required

@@ -23,7 +23,6 @@ resource "aws_eks_node_group" "eks_ng_public" {
   # Desired max percentage of unavailable worker nodes during node group update.
   update_config {
     max_unavailable = 1
-    #max_unavailable_percentage = 50    # ANY ONE TO USE
   }
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
