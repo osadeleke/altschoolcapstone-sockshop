@@ -91,6 +91,3 @@ sudo ufw enable
 sudo ufw allow 8080
 
 sudo ufw status
-
-
-

@@ -12,7 +12,7 @@ resource "kubernetes_ingress_v1" "prome-ingress" {
 
   spec {
     rule {
-      host = "grafana.nwokolo.live"
+      host = "grafana.segunadeleke.tech"
       http {
         path {
           backend {
